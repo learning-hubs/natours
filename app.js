@@ -20,10 +20,7 @@ const viewRouter = require('./routes/viewRoutes');
 
 const app = express(); //express() upon calling add a bunch of methods
 
-// const corsOptions = {
-//     origin: true,
-//     credentials: true,
-// };
+app.enable('trust proxy');
 
 app.use(cors());
 app.use(cookieParser());
