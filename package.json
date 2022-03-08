@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js NODE_ENV=development",
+    "start": "node server.js NODE_ENV=development",
+    "dev": "nodemon server.js NODE_ENV=development",
     "start:prod": "nodemon server.js NODE_ENV=production",
     "debug": "ndb server.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js --public-url .",
@@ -41,5 +42,8 @@
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }
