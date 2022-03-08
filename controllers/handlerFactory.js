@@ -57,7 +57,6 @@ exports.getAll = Model => catchAsync(async (req, res, next) => {
             .paginate();
             
     const doc = await features.query;
-    //console.log('THIS FILTER: ',doc);
 
     res.status(200).json({
         status: 'success',

@@ -13,7 +13,7 @@ exports.getOverview = catchAsync(async (req, res) => {
 });
 
 exports.getTour = catchAsync(async (req, res, next) => {
-    console.log('View cookies are: ', req.cookies);
+   
     const tour = await Tour.findOne({slug: req.params.slug}).populate({
         path: 'reviews',
         fields: 'review rating user'
@@ -37,7 +37,6 @@ exports.getLoginForm = async (req, res) => {
 }
 
 exports.getAccount = (req, res) => {
-    console.log('update account ',req.cookies);
     res.status(200).render('account', {
         title: 'Your account'
     });

@@ -8,6 +8,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -65,10 +66,12 @@ app.use(hpp({
 
 
 // 1) MIDDLEWARES 
-console.log('env check: ',process.env.NODE_ENV);
+
 if(process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));  //using 3rd party middleware
 }
+
+app.use(compression());
 
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
