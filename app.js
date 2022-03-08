@@ -22,10 +22,13 @@ const app = express(); //express() upon calling add a bunch of methods
 
 app.enable('trust proxy');
 
-app.use(cors());
 app.use(cookieParser());
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(cors());
+
+app.options('*', cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
