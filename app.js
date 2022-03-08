@@ -16,6 +16,7 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
+const bookingController = require('./controller/bookingController');
 const viewRouter = require('./routes/viewRoutes');
 
 const app = express(); //express() upon calling add a bunch of methods
@@ -43,6 +44,8 @@ const limiter = rateLimit({
     message: 'Too many requests from this IP, please try again in an hour!' 
 });
 app.use('/api',limiter); 
+
+app.post('/webhook-checkout', express.raw({ type: 'application/json' }), bookingController.webhookCheckout);
 
 //express does not put the body data on the request, so to make that data available we use something called middleware
 app.use(express.json({
